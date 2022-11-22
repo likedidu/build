@@ -1,22 +1,24 @@
-FROM golang:1.18-alpine as builder
-WORKDIR /go/src/github.com/megaease/easeprobe/
-COPY . /go/src/github.com/megaease/easeprobe/
-RUN --mount=type=cache,target=/var/cache/apk \
-    apk --no-cache add make git gcc libc-dev
+FROM python:3.9-alpine 
 
-COPY go.mod go.mod
-COPY go.sum go.sum
-COPY . .
+ENV TZ "Asia/Shanghai"
 
-RUN --mount=type=cache,mode=0777,id=gomodcache,target=/go/pkg/mod \
-    --mount=type=cache,target=/root/.cache/go-build \
-    make
+WORKDIR /app
 
-FROM alpine:latest
-RUN apk update && apk add tini tzdata busybox-extras curl redis
-WORKDIR /opt/
-COPY --from=builder /go/src/github.com/megaease/easeprobe/build/bin/* ./
-COPY --from=builder /go/src/github.com/megaease/easeprobe/resources/scripts/entrypoint.sh /
-ENV PATH /opt/:$PATH
-ENV PROBE_CONFIG /opt/config.yaml
-ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
+COPY requirements.txt /app
+
+RUN apk add --no-cache -f ca-certificates \
+                          tiff \
+                          libmagic \
+                          libwebp \
+                          ffmpeg \
+                          freetype \
+                          openjpeg \
+                          openblas \
+                          cairo \
+    && apk add --no-cache --virtual .build-deps git build-base \            
+    && rm -rf /var/cache/apk/* \            
+    && pip install --no-cache-dir -r requirements.txt \
+    && rm -rf ~/.cache \
+    && apk del .build-deps
+    
+ENTRYPOINT [ "ehforwarderbot" ]
