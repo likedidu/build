@@ -1,2 +1,2 @@
 #!/usr/bin/
-ehforwarderbot -p ${PROFILE}
+ehforwarderbot -p /app/profiles/default/
