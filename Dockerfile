@@ -6,16 +6,18 @@ WORKDIR /app
 
 COPY requirements.txt /app
 
-RUN apk add --no-cache -f ca-certificates \
-                          libffi-dev \
+RUN apk add --no-cache -f libffi-dev \
+                          openssl-dev \
+                          jpeg-dev \
+                          zlib-dev \
                           libmagic \
                           libwebp \
-                          zlib-dev \
+                          libwebp-dev \ 
                           ffmpeg \
-                          freetype \
-                          openjpeg \
-                          openblas \
                           cairo \
+                          freetype-dev \
+                          openjpeg-dev \
+                          cairo-dev \
     && apk add --no-cache --virtual .build-deps git build-base \            
     && rm -rf /var/cache/apk/* \            
     && pip install --no-cache-dir -r requirements.txt \
