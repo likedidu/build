@@ -7,7 +7,7 @@ WORKDIR /app
 COPY requirements.txt /app
 
 RUN apk add --no-cache -f ca-certificates \
-                          tiff \
+                          libffi-dev \
                           libmagic \
                           libwebp \
                           zlib-dev \
