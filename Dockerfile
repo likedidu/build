@@ -13,4 +13,4 @@ RUN apk --no-cache --virtual build add sed build-base libffi-dev openssl-dev git
     rm -rf ~/.cache &&\
     apk del build  &&\
 
-ENTRYPOINT [ "ehforwarderbot" ]
+CMD [ "ehforwarderbot" ]
