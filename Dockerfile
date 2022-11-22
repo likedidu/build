@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY requirements.txt /app
 
-RUN apk --no-cache --virtual build add sed build-base libffi-dev openssl-dev &&\
+RUN apk --no-cache --virtual build add sed build-base libffi-dev openssl-dev git &&\
     apk --no-cache add jpeg-dev zlib-dev libmagic libwebp-dev ffmpeg cairo &&\
     pip install -U pip &&\
     pip install -r requirements.txt &&\
