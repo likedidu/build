@@ -12,5 +12,5 @@ RUN apk --no-cache --virtual build add sed build-base libffi-dev openssl-dev git
     pip install -r requirements.txt &&\
     rm -rf ~/.cache &&\
     apk del build  &&\
-
-CMD [ "ehforwarderbot" ]
+    chmod +x /app/init.sh
+ENTRYPOINT ["sh", "/app/init.sh"]
