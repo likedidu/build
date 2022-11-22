@@ -15,7 +15,7 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
-          name: topcarryu/efb-bot-action
+          name: topcarryu/efb-bot-action-all
           username: '${{ secrets.DOCKER_USERNAME }}'
           password: '${{ secrets.DOCKER_PASSWORD }}'
           platforms: linux/amd64,linux/arm64
