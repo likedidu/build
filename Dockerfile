@@ -10,6 +10,7 @@ RUN apk add --no-cache -f ca-certificates \
                           tiff \
                           libmagic \
                           libwebp \
+                          zlib-dev \
                           ffmpeg \
                           freetype \
                           openjpeg \
