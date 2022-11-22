@@ -2,6 +2,8 @@ FROM python:3.9-alpine
 
 ENV TZ Asia/Shanghai
 
+COPY . /app
+
 WORKDIR /app
 
 COPY requirements.txt /app
