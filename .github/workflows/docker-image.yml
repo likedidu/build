@@ -9,13 +9,11 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf
-        with:
-          platforms: linux/amd64,linux/arm64
+        uses: docker/setup-buildx-action@v2.2.1
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
-          name: topcarryu/efb-bot-action-all
+          name: topcarryu/efb-bot-min
           username: '${{ secrets.DOCKER_USERNAME }}'
           password: '${{ secrets.DOCKER_PASSWORD }}'
           platforms: linux/amd64,linux/arm64
