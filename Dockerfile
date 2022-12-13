@@ -1,4 +1,4 @@
-FROM alpine:latest 
+FROM python:3.10-alpine
 
 ENV TZ Asia/Shanghai
 
