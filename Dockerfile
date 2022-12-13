@@ -1,4 +1,4 @@
-FROM python:3.9-alpine 
+FROM alpine:latest 
 
 ENV TZ Asia/Shanghai
 
@@ -22,8 +22,9 @@ RUN set -x \
                              freetype-dev \
                              openjpeg-dev \
                              cairo-dev \
-    && rm -rf /var/cache/apk/* \            
-    && pip install --no-cache-dir -r requirements.txt \
+    && rm -rf /var/cache/apk/* \ 
+    && pip3 install --upgrade pip \
+    && pip3 install --no-cache-dir -r requirements.txt \
     && rm -rf ~/.cache
     
 ENTRYPOINT [ "ehforwarderbot" ]
