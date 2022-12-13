@@ -26,6 +26,6 @@ RUN set -x \
     && rm -rf /var/cache/apk/* \ 
     && pip3 install --upgrade pip \
     && pip3 install --no-cache-dir -r requirements.txt \
-    && rm -rf ~/.cache
+    && rm -rf ~/.cache /tmp/*
     
 ENTRYPOINT [ "ehforwarderbot" ]
