@@ -22,7 +22,7 @@ RUN set -x \
                              freetype-dev \
                              openjpeg-dev \
                              cairo-dev \
-                             py3-pillow \
+                             build-base \
     && rm -rf /var/cache/apk/* \ 
     && pip3 install --upgrade pip \
     && pip3 install --no-cache-dir -r requirements.txt \
