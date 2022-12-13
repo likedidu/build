@@ -7,11 +7,9 @@ WORKDIR /app
 COPY requirements.txt /app
 
 RUN set -x \
-    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update -f \
     && apk upgrade \
-    && apk --no-cache add -f build-base \
-                             libffi-dev \
+    && apk --no-cache add -f libffi-dev \
                              openssl-dev \
                              jpeg-dev \
                              zlib-dev \
