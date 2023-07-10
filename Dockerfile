@@ -28,9 +28,9 @@ FROM python:alpine AS prod
 
 COPY --from=venv /app/venv /app/venv/
 
-ENV LANG=C.UTF-8
-    TZ=Asia/Shanghai
-    PATH=/app/venv/bin:$PATH
+ENV LANG C.UTF-8
+    TZ Asia/Shanghai
+    PATH /app/venv/bin:$PATH
 
 RUN set -ex \
     && apk --update upgrade \
